@@ -6,6 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
     let touchStartX = 0;
     let touchEndX = 0;
 
+    let hasSwiped = false;
+
 
 
     // ======================================
@@ -29,7 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
     }
-
 
 
 
@@ -93,17 +94,24 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="card-body">
 
 
-                    <h5 class="card-title">
+                    ${
+                        drink.badge
+                        ?
+                        `<span class="badge bg-danger">
+                            ${drink.badge}
+                        </span>`
+                        :
+                        ""
+                    }
 
+
+                    <h5 class="card-title mt-2">
                         ${drink.title}
-
                     </h5>
 
 
                     <p class="card-text">
-
                         ${drink.description}
-
                     </p>
 
 
@@ -133,6 +141,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+
     // ======================================
     // BUILD MODAL CONTENT
     // ======================================
@@ -141,43 +150,50 @@ document.addEventListener("DOMContentLoaded", () => {
     function showDrink(index, direction = "") {
 
 
-    currentDrinkIndex = index;
+        currentDrinkIndex = index;
 
 
-    const drink =
-        drinks[index];
-
-
-
-modalContent.classList.remove(
-    "slide-left",
-    "slide-right"
-);
-
-
-void modalContent.offsetWidth;
-
-
-if(direction){
-
-    modalContent.classList.add(
-        direction
-    );
-
-}
+        const drink =
+            drinks[index];
 
 
 
-modalContent.innerHTML = `
+        modalContent.classList.remove(
+            "slide-left",
+            "slide-right"
+        );
+
+
+        void modalContent.offsetWidth;
+
+
+
+        if(direction){
+
+            modalContent.classList.add(direction);
+
+        }
+
+
+
+        modalContent.innerHTML = `
+
 
             <div class="modal-header">
 
 
-                <h3>
+                <div>
 
-                    ${drink.cocktail}
+                    <h3>
+                        ${drink.title}
+                    </h3>
 
-                </h3>
+
+                    <small>
+                        ${drink.cocktail}
+                    </small>
+
+                </div>
 
 
 
@@ -200,6 +216,24 @@ modalContent.innerHTML = `
             <div class="modal-body">
 
 
+                ${
+                    !hasSwiped
+                    ?
+                    `
+                    <div 
+                        class="swipe-hint"
+                        id="swipeHint">
+
+                        ← Swipe for more cocktails →
+
+                    </div>
+                    `
+                    :
+                    ""
+                }
+
+
+
                 <img
 
                     src="${drink.image}"
@@ -209,27 +243,16 @@ modalContent.innerHTML = `
                     alt="${drink.title}">
 
 
-                <h4 class="mt-3">
 
-                    ${drink.title}
-
-                </h4>
                 <div class="drink-counter">
 
-    ${index + 1} of ${drinks.length}
+                    ${index + 1} of ${drinks.length}
 
-</div>
-
-
-<div class="swipe-hint">
-
-    Swipe left or right for more cocktails
-
-</div>
+                </div>
 
 
 
-                <p>
+                <p class="mt-3">
 
                     ${drink.description}
 
@@ -250,10 +273,14 @@ modalContent.innerHTML = `
 
                     ${
                         drink.ingredients
+                        ?
+                        drink.ingredients
                         .map(item =>
                             `<li>${item}</li>`
                         )
                         .join("")
+                        :
+                        "<li>No ingredients listed.</li>"
                     }
 
                 </ul>
@@ -262,79 +289,86 @@ modalContent.innerHTML = `
 
 
 
-                <h5>
+                ${
+                    drink.instructions
+                    ?
+                    `
 
-                    Instructions
-
-                </h5>
-
-
-
-                <ol>
-
-                    ${
-                        drink.instructions
-                        .map(item =>
-                            `<li>${item}</li>`
-                        )
-                        .join("")
-                    }
-
-                </ol>
+                    <h5>
+                        Instructions
+                    </h5>
 
 
+                    <ol>
+
+                        ${
+                            drink.instructions
+                            .map(item =>
+                                `<li>${item}</li>`
+                            )
+                            .join("")
+                        }
+
+                    </ol>
+
+                    `
+                    :
+                    ""
+                }
 
 
-
-                <h5>
-
-                    Variations
-
-                </h5>
 
 
 
                 ${
+                    drink.variations &&
                     drink.variations.length
-
                     ?
 
-                    drink.variations
-                    .map(v => `
+                    `
+
+                    <h5>
+                        Variations
+                    </h5>
 
 
-                        <div class="variation">
+                    ${
+                        drink.variations
+                        .map(v => `
 
 
-                            <strong>
-
-                                ${v.name}
-
-                            </strong>
+                            <div class="variation">
 
 
-                            <p>
-
-                                ${v.description}
-
-                            </p>
+                                <strong>
+                                    ${v.name}
+                                </strong>
 
 
-                        </div>
+                                <p>
+                                    ${v.description}
+                                </p>
 
 
-                    `)
-                    .join("")
+                            </div>
 
+
+                        `)
+                        .join("")
+                    }
+
+                    `
 
                     :
 
-                    "<p>No variations available.</p>"
+                    ""
 
                 }
 
 
+
             </div>
+
 
 
 
@@ -349,6 +383,7 @@ modalContent.innerHTML = `
                     ← Previous
 
                 </button>
+
 
 
 
@@ -375,7 +410,6 @@ modalContent.innerHTML = `
 
 
 
-
     // ======================================
     // CARD CLICK EVENTS
     // ======================================
@@ -389,6 +423,9 @@ modalContent.innerHTML = `
         card.addEventListener(
             "click",
             () => {
+
+
+                hasSwiped = false;
 
 
                 showDrink(
@@ -412,70 +449,27 @@ modalContent.innerHTML = `
 
 
     // ======================================
-    // NEXT / PREVIOUS BUTTONS
+    // NEXT / PREVIOUS
     // ======================================
 
 
-    document.addEventListener(
-        "click",
-        event => {
-
-
-
-            if (
-                event.target.classList.contains(
-                    "next-drink"
-                )
-            ) {
-
-
-                nextDrink();
-
-
-            }
-
-
-
-
-            if (
-                event.target.classList.contains(
-                    "previous-drink"
-                )
-            ) {
-
-
-                previousDrink();
-
-
-            }
-
-
-        }
-    );
-
-
-
-
-
-    function nextDrink() {
+    function nextDrink(){
 
 
         currentDrinkIndex++;
 
 
-        if (
-            currentDrinkIndex >= drinks.length
-        ) {
+        if(currentDrinkIndex >= drinks.length){
 
             currentDrinkIndex = 0;
 
         }
 
 
-showDrink(
-    currentDrinkIndex,
-    "slide-left"
-);
+        showDrink(
+            currentDrinkIndex,
+            "slide-left"
+        );
 
     }
 
@@ -483,15 +477,13 @@ showDrink(
 
 
 
-    function previousDrink() {
+    function previousDrink(){
 
 
         currentDrinkIndex--;
 
 
-        if (
-            currentDrinkIndex < 0
-        ) {
+        if(currentDrinkIndex < 0){
 
             currentDrinkIndex =
                 drinks.length - 1;
@@ -499,12 +491,50 @@ showDrink(
         }
 
 
-showDrink(
-    currentDrinkIndex,
-    "slide-right"
-);
+        showDrink(
+            currentDrinkIndex,
+            "slide-right"
+        );
 
     }
+
+
+
+
+
+
+
+    document.addEventListener(
+        "click",
+        event => {
+
+
+            if(
+                event.target.classList.contains(
+                    "next-drink"
+                )
+            ){
+
+                nextDrink();
+
+            }
+
+
+
+            if(
+                event.target.classList.contains(
+                    "previous-drink"
+                )
+            ){
+
+                previousDrink();
+
+            }
+
+
+        }
+    );
+
 
 
 
@@ -534,6 +564,7 @@ showDrink(
 
 
 
+
     drinkModalElement.addEventListener(
         "touchend",
         event => {
@@ -541,7 +572,6 @@ showDrink(
 
             touchEndX =
                 event.changedTouches[0].screenX;
-
 
 
             handleSwipe();
@@ -556,7 +586,7 @@ showDrink(
 
 
 
-    function handleSwipe() {
+    function handleSwipe(){
 
 
         const swipeDistance =
@@ -564,11 +594,30 @@ showDrink(
 
 
 
-        // Swipe left = next drink
+        if(Math.abs(swipeDistance) > 50){
 
-        if (
-            swipeDistance < -75
-        ) {
+
+            const hint =
+                document.getElementById("swipeHint");
+
+
+            if(hint){
+
+                hint.classList.add("hide");
+
+            }
+
+
+            hasSwiped = true;
+
+
+        }
+
+
+
+
+
+        if(swipeDistance < -50){
 
 
             nextDrink();
@@ -578,11 +627,9 @@ showDrink(
 
 
 
-        // Swipe right = previous drink
 
-        if (
-            swipeDistance > 75
-        ) {
+
+        if(swipeDistance > 50){
 
 
             previousDrink();
@@ -592,7 +639,6 @@ showDrink(
 
 
     }
-
 
 
 });

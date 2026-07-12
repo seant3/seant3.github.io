@@ -539,7 +539,39 @@ body {
 
 }
 
+/* ======================================
+   SWIPE HINT
+====================================== */
 
+.swipe-hint {
+
+    text-align:center;
+
+    font-size:.85rem;
+
+    color:#777;
+
+    margin:10px 0 15px;
+
+    opacity:1;
+
+    transition:
+        opacity .5s ease,
+        transform .5s ease;
+
+}
+
+
+
+.swipe-hint.hide {
+
+    opacity:0;
+
+    transform:translateY(-10px);
+
+    pointer-events:none;
+
+}
 
 /* ======================================
    MOBILE OPTIMIZATION
