@@ -338,6 +338,43 @@ const drinks = [
     ],
 
     variations: []
+},
+{
+    id: 10,
+
+    title: "Moo Moo Goo",
+
+    cocktail: "Milk",
+
+    badge: "HOUSE FAVORITE",
+
+    image: "images/milk.jpeg",
+
+    description:
+        "Is the milk coated??? A tremendous beverage for our youngest VIP guests. Fresh, creamy, and always a crowd favorite. No cocktails, no problems — just a beautiful glass of milk ready for the next generation of champions.",
+
+    ingredients: [
+        "Milk"
+    ],
+
+    instructions: [
+        "Pour milk into your favorite glass.",
+        "Serve chilled.",
+        "Enjoy like a true VIP."
+    ],
+
+    variations: [
+        {
+            name: "Chocolate Moo Moo Goo",
+            description:
+                "Add chocolate syrup for a sweeter, dessert-style upgrade."
+        },
+        {
+            name: "Strawberry Moo Moo Goo",
+            description:
+                "Mix with strawberry syrup for a fruity twist."
+        }
+    ]
 }
 
 ];
