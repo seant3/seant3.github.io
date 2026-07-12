@@ -1,24 +1,715 @@
+/* ======================================
+   GLOBAL STYLES
+====================================== */
+
+
 body {
-  background-color: purple;
+
+    font-family:
+        "Helvetica Neue",
+        Arial,
+        sans-serif;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #f7f8fb 100%
+        );
+
+    color:#222;
+
 }
 
-nav {
-  justify-content: center;
-  text-align: center;
+
+
+.container {
+
+    padding-bottom:50px;
+
 }
 
-.card {
-  width: 95%;
-  justify-content: center;
-  text-align: center;
-  padding: 15px;
-  margin: 10px 10px 10px 10px;
+
+
+/* ======================================
+   HERO SECTION
+====================================== */
+
+
+.hero {
+
+    position:relative;
+
+    width:100%;
+
+    height:80vh;
+
+    min-height:500px;
+
+    overflow:hidden;
+
 }
 
-.navbar-brand {
-  margin: auto;
-  width: 95%;
-  justify-content: center;
-  padding: 15px;
-  text-align: center;
+
+
+.hero video {
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+
+
+.hero-overlay {
+
+    position:relative;
+
+    z-index:2;
+
+    height:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    padding:20px;
+
+
+    background:
+        rgba(0,0,0,.45);
+
+    color:white;
+
+}
+
+
+
+.hero-overlay h1 {
+
+    font-size:clamp(3rem, 8vw, 6rem);
+
+    font-weight:900;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    text-shadow:
+        3px 3px 8px black;
+
+}
+
+
+
+.hero-overlay h3 {
+
+    font-size:clamp(1.2rem, 3vw, 2rem);
+
+    margin-top:15px;
+
+    text-shadow:
+        2px 2px 5px black;
+
+}
+
+
+
+.hero-overlay h4 {
+
+    margin-top:25px;
+
+    font-size:clamp(1.1rem, 3vw, 1.8rem);
+
+    font-weight:bold;
+
+    color:#d4af37;
+
+    text-shadow:
+        2px 2px 5px black;
+
+}
+
+
+
+/* ======================================
+   SECTION TITLE
+====================================== */
+
+
+.section-title {
+
+    text-align:center;
+
+    color:#1f3c88;
+
+    font-weight:900;
+
+    text-transform:uppercase;
+
+    letter-spacing:3px;
+
+    margin-bottom:40px;
+
+}
+
+
+
+.section-title::after {
+
+    content:"";
+
+    display:block;
+
+    width:120px;
+
+    height:5px;
+
+    margin:15px auto 0;
+
+    background:#b22234;
+
+}
+
+
+
+
+
+/* ======================================
+   DRINK CARDS
+====================================== */
+
+
+.drink-card {
+
+    cursor:pointer;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    border:3px solid transparent;
+
+    background:white;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        border-color .25s ease;
+
+
+}
+
+
+
+.drink-card:hover {
+
+
+    transform:
+        translateY(-8px);
+
+
+    border-color:#b22234;
+
+
+    box-shadow:
+        0 12px 30px rgba(31,60,136,.25);
+
+
+}
+
+
+
+.drink-card img {
+
+
+    height:300px;
+
+    width:100%;
+
+    object-fit:cover;
+
+
+}
+
+
+
+.drink-card .card-title {
+
+
+    color:#1f3c88;
+
+    font-size:1.4rem;
+
+    font-weight:800;
+
+
+}
+
+
+
+.drink-card .card-text {
+
+
+    color:#444;
+
+}
+
+
+
+.click-hint {
+
+
+    color:#b22234;
+
+    font-weight:bold;
+
+    margin-top:15px;
+
+}
+
+
+
+/* ======================================
+   MODAL
+====================================== */
+
+
+.cocktail-modal {
+
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+
+}
+
+
+
+.modal-dialog {
+
+
+    max-width:700px;
+
+
+}
+
+
+
+.modal-header {
+
+
+    background:#1f3c88;
+
+    color:white;
+
+    border-bottom:
+        5px solid #d4af37;
+
+
+}
+
+
+
+.modal-header h3 {
+
+
+    font-weight:900;
+
+
+}
+
+
+
+.modal-body {
+
+
+    max-height:70vh;
+
+    overflow-y:auto;
+
+
+}
+
+
+
+.modal-drink-image {
+
+
+    width:100%;
+
+    height:350px;
+
+    object-fit:cover;
+
+    border-radius:15px;
+
+
+}
+
+
+
+.modal-body h4 {
+
+
+    color:#1f3c88;
+
+    font-weight:bold;
+
+
+}
+
+
+
+.modal-body h5 {
+
+
+    color:#b22234;
+
+    margin-top:20px;
+
+
+}
+
+
+
+.variation {
+
+
+    background:#f7f8fb;
+
+    border-left:
+        5px solid #1f3c88;
+
+    padding:12px;
+
+    margin-bottom:12px;
+
+    border-radius:8px;
+
+
+}
+
+
+
+.modal-footer {
+
+
+    border-top:
+        3px solid #b22234;
+
+
+}
+
+
+
+/* ======================================
+   BUTTONS
+====================================== */
+
+
+.btn-primary {
+
+
+    background:#1f3c88;
+
+    border-color:#1f3c88;
+
+
+}
+
+
+
+.btn-primary:hover {
+
+
+    background:#b22234;
+
+    border-color:#b22234;
+
+
+}
+
+
+
+.btn-outline-primary {
+
+
+    color:#1f3c88;
+
+    border-color:#1f3c88;
+
+
+}
+
+
+
+.btn-outline-primary:hover {
+
+
+    background:#1f3c88;
+
+    color:white;
+
+
+}
+
+
+
+
+
+/* ======================================
+   MOBILE OPTIMIZATION
+====================================== */
+
+
+@media(max-width:768px){
+
+
+
+    .hero {
+
+
+        height:70vh;
+
+        min-height:400px;
+
+
+    }
+
+
+
+    .drink-card img {
+
+
+        height:240px;
+
+
+    }
+
+
+
+    .modal-dialog {
+
+
+        margin:10px;
+
+
+    }
+
+
+
+    .modal-body {
+
+
+        padding:15px;
+
+
+    }
+
+
+
+    .modal-drink-image {
+
+
+        height:220px;
+
+
+    }
+
+
+
+    .modal-footer {
+
+
+        justify-content:space-between;
+
+
+    }
+
+
+}
+
+/* ======================================
+   COCKTAIL APP MODAL POLISH
+====================================== */
+
+
+.cocktail-modal {
+
+    transition:
+        transform .25s ease,
+        opacity .25s ease;
+
+}
+
+
+
+.modal-drink-image {
+
+    transition:
+        transform .25s ease,
+        opacity .25s ease;
+
+}
+
+
+
+/* Swipe animation states */
+
+.slide-left {
+
+    animation:
+        slideLeft .25s ease;
+
+}
+
+
+.slide-right {
+
+    animation:
+        slideRight .25s ease;
+
+}
+
+
+
+@keyframes slideLeft {
+
+    from {
+
+        transform:translateX(40px);
+
+        opacity:0;
+
+    }
+
+
+    to {
+
+        transform:translateX(0);
+
+        opacity:1;
+
+    }
+
+}
+
+
+
+@keyframes slideRight {
+
+    from {
+
+        transform:translateX(-40px);
+
+        opacity:0;
+
+    }
+
+
+    to {
+
+        transform:translateX(0);
+
+        opacity:1;
+
+    }
+
+}
+
+
+
+/* Drink counter */
+
+
+.drink-counter {
+
+    text-align:center;
+
+    color:#1f3c88;
+
+    font-weight:bold;
+
+    margin-top:10px;
+
+}
+
+
+
+.swipe-hint {
+
+    text-align:center;
+
+    font-size:.85rem;
+
+    color:#777;
+
+    margin-top:10px;
+
+}
+
+
+
+
+/* Phone experience */
+
+@media(max-width:768px){
+
+
+    .modal-dialog {
+
+        margin:0;
+
+        max-width:100%;
+
+        height:100%;
+
+    }
+
+
+
+    .modal-content {
+
+        min-height:100vh;
+
+        border-radius:0;
+
+    }
+
+
+
+    .modal-body {
+
+        max-height:
+            calc(100vh - 170px);
+
+    }
+
+
+
+    .modal-drink-image {
+
+        height:250px;
+
+    }
+
+
+
 }
