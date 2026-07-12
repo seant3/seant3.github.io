@@ -346,7 +346,7 @@ const drinks = [
 
     cocktail: "Milk",
 
-    badge: "HOUSE FAVORITE",
+    badge: "KIDS FAVORITE",
 
     image: "images/milk.jpeg",
 

@@ -373,37 +373,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-            <div class="modal-footer">
+            ${window.innerWidth > 768 ? `
+
+<div class="modal-footer">
+
+    <button
+        class="btn btn-outline-primary previous-drink">
+
+        ← Previous
+
+    </button>
 
 
-                <button
+    <button
+        class="btn btn-primary next-drink">
 
-                    class="btn btn-outline-primary previous-drink">
+        Next →
 
-                    ← Previous
+    </button>
 
-                </button>
+</div>
 
-
-
-
-
-                <button
-
-                    class="btn btn-primary next-drink">
-
-                    Next →
-
-                </button>
-
-
-            </div>
+` : ""}
+            
 
 
         `;
+            }
 
 
-    }
+    
 
 
 
