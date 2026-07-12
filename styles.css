@@ -65,9 +65,7 @@ body {
 
     position:absolute;
 
-    top:0;
-
-    left:0;
+    inset:0;
 
     width:100%;
 
@@ -99,8 +97,7 @@ body {
 
     padding:20px;
 
-    background:
-        rgba(0,0,0,.45);
+    background:rgba(0,0,0,.45);
 
     color:white;
 
@@ -118,8 +115,7 @@ body {
 
     text-transform:uppercase;
 
-    text-shadow:
-        3px 3px 8px black;
+    text-shadow:3px 3px 8px black;
 
 }
 
@@ -131,8 +127,7 @@ body {
 
     margin-top:15px;
 
-    text-shadow:
-        2px 2px 5px black;
+    text-shadow:2px 2px 5px black;
 
 }
 
@@ -148,8 +143,7 @@ body {
 
     color:#d4af37;
 
-    text-shadow:
-        2px 2px 5px black;
+    text-shadow:2px 2px 5px black;
 
 }
 
@@ -312,8 +306,7 @@ body {
 
     color:white;
 
-    border-bottom:
-        5px solid #d4af37;
+    border-bottom:5px solid #d4af37;
 
 }
 
@@ -347,10 +340,6 @@ body {
 
     border-radius:15px;
 
-    transition:
-        transform .25s ease,
-        opacity .25s ease;
-
 }
 
 
@@ -379,8 +368,7 @@ body {
 
     background:#f7f8fb;
 
-    border-left:
-        5px solid #1f3c88;
+    border-left:5px solid #1f3c88;
 
     padding:12px;
 
@@ -392,17 +380,23 @@ body {
 
 
 
-.modal-footer {
+/* ======================================
+   DESKTOP NAVIGATION
+====================================== */
 
-    border-top:
-        3px solid #b22234;
+
+.desktop-navigation {
+
+    display:flex;
+
+    border-top:3px solid #b22234;
 
 }
 
 
 
 /* ======================================
-   SWIPE ANIMATION
+   SWIPE EFFECTS
 ====================================== */
 
 
@@ -412,7 +406,6 @@ body {
         slideLeft .25s ease;
 
 }
-
 
 
 .slide-right {
@@ -468,18 +461,9 @@ body {
 
 
 
-.drink-counter {
-
-    text-align:center;
-
-    color:#1f3c88;
-
-    font-weight:bold;
-
-    margin-top:10px;
-
-}
-
+/* ======================================
+   SWIPE HINT
+====================================== */
 
 
 .swipe-hint {
@@ -489,6 +473,43 @@ body {
     font-size:.85rem;
 
     color:#777;
+
+    margin:10px 0 15px;
+
+    opacity:1;
+
+    transition:
+        opacity .5s ease,
+        transform .5s ease;
+
+}
+
+
+
+.swipe-hint.hide {
+
+    opacity:0;
+
+    transform:translateY(-10px);
+
+    pointer-events:none;
+
+}
+
+
+
+/* ======================================
+   COUNTER
+====================================== */
+
+
+.drink-counter {
+
+    text-align:center;
+
+    color:#1f3c88;
+
+    font-weight:bold;
 
     margin-top:10px;
 
@@ -539,39 +560,7 @@ body {
 
 }
 
-/* ======================================
-   SWIPE HINT
-====================================== */
 
-.swipe-hint {
-
-    text-align:center;
-
-    font-size:.85rem;
-
-    color:#777;
-
-    margin:10px 0 15px;
-
-    opacity:1;
-
-    transition:
-        opacity .5s ease,
-        transform .5s ease;
-
-}
-
-
-
-.swipe-hint.hide {
-
-    opacity:0;
-
-    transform:translateY(-10px);
-
-    pointer-events:none;
-
-}
 
 /* ======================================
    MOBILE OPTIMIZATION
@@ -599,15 +588,25 @@ body {
 
 
 
-    /* Stable mobile modal */
+    body.modal-open {
+
+        overflow:hidden;
+
+    }
+
+
+
+    .modal {
+
+        overflow:hidden;
+
+    }
+
+
 
     .modal-dialog {
 
         margin:10px;
-
-        width:auto;
-
-        max-width:none;
 
         height:calc(100dvh - 20px);
 
@@ -617,19 +616,17 @@ body {
 
     .modal-content {
 
-    height:calc(100dvh - 20px);
+        height:100%;
 
-    min-height:calc(100dvh - 20px);
+        display:flex;
 
-    border-radius:20px;
+        flex-direction:column;
 
-    display:flex;
+        overflow:hidden;
 
-    flex-direction:column;
+        border-radius:20px;
 
-    overflow:hidden;
-
-}
+    }
 
 
 
@@ -646,19 +643,19 @@ body {
 
     .modal-body {
 
-    flex:1 1 auto;
+        flex:1 1 auto;
 
-    min-height:0;
+        min-height:0;
 
-    overflow-y:auto;
+        overflow-y:auto !important;
 
-    overflow-x:hidden;
+        overflow-x:hidden;
 
-    -webkit-overflow-scrolling:touch;
+        -webkit-overflow-scrolling:touch;
 
-    padding:15px;
+        padding:15px;
 
-}
+    }
 
 
 
@@ -670,98 +667,9 @@ body {
 
 
 
-    .modal-footer {
+    .desktop-navigation {
 
-        flex-shrink:0;
-
-        justify-content:space-between;
-
-        padding-bottom:
-            calc(1rem + env(safe-area-inset-bottom));
-
-    }
-
-}
-
-/* ======================================
-   MOBILE MODAL SCROLL FIX
-====================================== */
-
-@media(max-width:768px){
-
-    body.modal-open {
-
-        overflow:hidden;
-
-    }
-
-
-    .modal {
-
-        overflow:hidden;
-
-    }
-
-
-    .modal-dialog {
-
-        height:calc(100dvh - 20px);
-
-    }
-
-
-    .modal-content {
-
-        height:100%;
-
-        display:flex;
-
-        flex-direction:column;
-
-        overflow:hidden;
-
-    }
-
-
-    .modal-header {
-
-        flex-shrink:0;
-
-    }
-
-
-    .modal-body {
-
-        flex:1 1 auto;
-
-        min-height:0;
-
-        overflow-y:auto !important;
-
-        overflow-x:hidden;
-
-        -webkit-overflow-scrolling:touch;
-
-    }
-
-
-    .modal-footer {
-
-        flex-shrink:0;
-
-    }
-
-}
-
-/* ======================================
-   MOBILE MODAL - HIDE NAV BUTTONS
-====================================== */
-
-@media(max-width:768px){
-
-    .modal-footer {
-
-        display:none;
+        display:none !important;
 
     }
 

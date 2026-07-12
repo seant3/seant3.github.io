@@ -373,9 +373,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-            ${window.innerWidth > 768 ? `
-
-<div class="modal-footer">
+           <div class="modal-footer desktop-navigation">
 
     <button
         class="btn btn-outline-primary previous-drink">
@@ -393,13 +391,12 @@ document.addEventListener("DOMContentLoaded", () => {
     </button>
 
 </div>
-
-` : ""}
+}
             
 
 
-        `;
-            }
+             `;
+     }
 
 
     
