@@ -249,9 +249,9 @@ const drinks = [
 
     title: "The Greatest Smash",
 
-    cocktail: "House Favorite",
+    cocktail: "Bourbon Smash",
 
-    badge: "HOUSE FAVORITE",
+    badge: "HOUSE FAVORITE",    
 
     image: "images/smash.jpeg",
 
@@ -279,7 +279,7 @@ const drinks = [
 
     title: "The Wall",
 
-    cocktail: "House Favorite",
+    cocktail: "Ranch Water",
 
     badge: "HOUSE FAVORITE",
 

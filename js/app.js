@@ -175,7 +175,7 @@ modalContent.innerHTML = `
 
                 <h3>
 
-                    ${drink.title}
+                    ${drink.cocktail}
 
                 </h3>
 
@@ -211,7 +211,7 @@ modalContent.innerHTML = `
 
                 <h4 class="mt-3">
 
-                    ${drink.cocktail}
+                    ${drink.title}
 
                 </h4>
                 <div class="drink-counter">
