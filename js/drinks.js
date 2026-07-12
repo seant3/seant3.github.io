@@ -20,7 +20,7 @@ const drinks = [
         strength: "Strong",
 
         description:
-        "A tremendous classic. Rich bourbon, perfect balance, and absolutely no unnecessary fees. A drink built for people who appreciate something timeless, powerful, and done the right way.",
+        "A classic everyone can get behind. Rich bourbon, perfect balance, and absolutely no unnecessary fees. A timeless drink built for people who appreciate quality, tradition, and getting things done.",
 
         ingredients: [
             "2 oz Bourbon",
@@ -66,7 +66,7 @@ const drinks = [
         strength: "Light",
 
         description:
-        "A beautiful decision. Fresh mint, elderflower, lime, and sparkling prosecco combine into a cocktail that brings elegance and energy to the party. Light, refreshing, and exactly what you want when celebrating a tremendous occasion.",
+        "A beautiful decision signed into effect immediately. Fresh mint, elderflower, lime, and sparkling prosecco combine for an elegant executive order everyone can support. Refreshing, luxurious, and officially party-approved.",
 
         ingredients: [
             "2 oz Prosecco",
@@ -107,7 +107,7 @@ const drinks = [
         strength: "Medium",
 
         description:
-        "A legendary combination of tequila, citrus, and balance. Smooth, refreshing, and ready for a tremendous celebration.",
+        "A historic journey with no passport required. Premium tequila, fresh lime, and a perfect balance of citrus make this the smoothest crossing you'll ever experience. Big flavor, incredible finish, and approved for celebrations on both sides of the border.",
 
         ingredients: [
             "2 oz Tequila",
@@ -123,14 +123,30 @@ const drinks = [
             "Garnish with lime."
         ],
 
-        variations: []
+        variations: [
+            {
+                name: "The Southern Border",
+                description:
+                "A classic margarita with a spicy jalapeño kick for those who like their drinks with extra heat."
+            },
+            {
+                name: "The Golden Wall",
+                description:
+                "A premium Cadillac margarita upgraded with top-shelf tequila and Grand Marnier."
+            },
+            {
+                name: "Frozen Victory",
+                description:
+                "A blended frozen margarita that's smooth, refreshing, and built for warm weather celebrations."
+            }
+        ]
     },
 
 
     {
         id: 4,
 
-        title: "The Deal Maker",
+        title: "The Greatest Smash",
 
         cocktail: "Bourbon Smash",
 
@@ -147,7 +163,7 @@ const drinks = [
         strength: "Medium",
 
         description:
-        "A winning combination of bourbon, fresh citrus, and mint. A deal so good everyone at the table will want one.",
+        "A first-class cocktail achievement. Premium bourbon, fresh lemon, mint, and sweetness combine into a smash with unmatched flavor. Frankly, it's a very impressive drink that delivers every single time.",
 
         ingredients: [
             "2 oz Bourbon",
@@ -165,9 +181,7 @@ const drinks = [
 
         variations: []
     },
-
-
-    {
+        {
         id: 5,
 
         title: "The Wall",
@@ -187,7 +201,7 @@ const drinks = [
         strength: "Refreshing",
 
         description:
-        "Simple. Strong. Effective. Tequila, lime, and sparkling water create a refreshing wall of flavor that keeps the party moving.",
+        "A strong foundation. A major wall. A cocktail that knows exactly what it is. Premium tequila, fresh lime, and sparkling water create a clean, refreshing drink that keeps the good times protected all night long.",
 
         ingredients: [
             "2 oz Tequila",
@@ -202,7 +216,13 @@ const drinks = [
             "Stir gently."
         ],
 
-        variations: []
+        variations: [
+            {
+                name: "Tequila Soda",
+                description:
+                "The same cocktail without as much lime."
+            }
+        ]
     },
 
 
@@ -226,7 +246,7 @@ const drinks = [
         strength: "Medium",
 
         description:
-        "A first-class cocktail with a winning finish. Bourbon, citrus, and bitters come together in perfect balance, served over a beautiful crystal-clear ice cube. A smooth ride from takeoff to landing.",
+        "A winning finish from start to celebration. Bourbon, citrus, Aperol, and amaro combine for a top-tier cocktail experience. Smooth, balanced, and exactly the kind of victory lap you deserve.",
 
         ingredients: [
             "3/4 oz Bourbon",
@@ -241,7 +261,18 @@ const drinks = [
             "Strain into rocks glass over one large cube."
         ],
 
-        variations: []
+        variations: [
+            {
+                name: "The Final Lap",
+                description:
+                "A richer variation using a premium bourbon for a smoother finish."
+            },
+            {
+                name: "Amaro Plane",
+                description:
+                "A more bitter-forward version emphasizing the herbal notes of the amaro."
+            }
+        ]
     },
 
 
@@ -265,7 +296,7 @@ const drinks = [
         strength: "Strong",
 
         description:
-        "A bold late-night favorite. Rich espresso, smooth vodka, and coffee flavors come together in a cocktail that wakes up the room and keeps the celebration moving. Tremendous energy in every sip.",
+        "A late-night creation that nobody can quite explain — but everyone remembers. Rich espresso, smooth vodka, and coffee flavors combine into a powerful energy boost that keeps the celebration going long after midnight. Quite a drink.",
 
         ingredients: [
             "2 oz Vodka",
@@ -304,7 +335,7 @@ const drinks = [
         strength: "Medium",
 
         description:
-        "A classic combination that keeps making headlines. Vodka, ginger beer, and lime create a story everyone can agree tastes great.",
+        "A classic story the mainstream can't ignore. Vodka, ginger beer, and lime combine into a fantastic headline-making cocktail with a flavor that speaks for itself.",
 
         ingredients: [
             "2 oz Vodka",
@@ -318,7 +349,23 @@ const drinks = [
             "Top with ginger beer."
         ],
 
-        variations: []
+        variations: [
+            {
+                name: "Kentucky Mule",
+                description:
+                "A bourbon-based mule replacing vodka with whiskey for a richer, warmer flavor."
+            },
+            {
+                name: "Mexican Mule",
+                description:
+                "A tequila-based mule with lime and ginger beer for a bright, spicy twist."
+            },
+            {
+                name: "Gin Gin Mule",
+                description:
+                "A refreshing version using gin with ginger beer and lime."
+            }
+        ]
     },
 
 
@@ -342,7 +389,7 @@ const drinks = [
         strength: "Varies",
 
         description:
-        "A massive package with something for everyone. Carefully negotiated and guaranteed to pass at any party.",
+        "A massive package carefully negotiated to satisfy everyone. Beer, wine, and seltzers come together in one landmark piece of legislation that passes unanimously at every celebration.",
 
         ingredients: [
             "Beer",
@@ -380,8 +427,7 @@ const drinks = [
         strength: "Family Friendly",
 
         description:
-        "The official kids' selection. Fresh, classic, and absolutely tremendous when cookies are involved.",
-
+"Is the milk coated??? A tremendous beverage for our youngest VIP guests. Fresh, creamy, and always a crowd favorite. No cocktails, no problems — just a beautiful glass of milk ready for the next generation of champions.",
         ingredients: [
             "Milk"
         ],
@@ -391,7 +437,23 @@ const drinks = [
             "Enjoy."
         ],
 
-        variations: []
+        variations: [
+            {
+                name: "Chocolate Milk",
+                description:
+                "Classic milk transformed with rich chocolate flavor."
+            },
+            {
+                name: "Strawberry Milk",
+                description:
+                "A sweet strawberry version that's always a kid favorite."
+            },
+            {
+                name: "Cookies & Cream Milk",
+                description:
+                "A dessert-style milk creation inspired by everyone's favorite cookies."
+            }
+        ]
     }
 
 ];
