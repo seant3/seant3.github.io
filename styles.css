@@ -614,11 +614,13 @@ body {
 
     .modal-body {
 
-    flex:1;
+    flex:1 1 auto;
 
     min-height:0;
 
     overflow-y:auto;
+
+    overflow-x:hidden;
 
     -webkit-overflow-scrolling:touch;
 
@@ -714,6 +716,20 @@ body {
     .modal-footer {
 
         flex-shrink:0;
+
+    }
+
+}
+
+/* ======================================
+   MOBILE MODAL - HIDE NAV BUTTONS
+====================================== */
+
+@media(max-width:768px){
+
+    .modal-footer {
+
+        display:none;
 
     }
 
