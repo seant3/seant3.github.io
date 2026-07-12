@@ -1,380 +1,397 @@
 const drinks = [
-{
-    id: 1,
-
-    title: "The Deal Maker",
-
-    cocktail: "Old Fashioned",
-
-    badge: "SIGNATURE",
-
-    image: "images/old_fashioned.jpeg",
-
-    description:
-"A serious cocktail for serious celebrations. Premium bourbon, aromatic bitters, and a touch of sweetness come together in a timeless combination that knows how to close the deal. Smooth, confident, and always ready for the spotlight — this is what happens when a classic does business.",    ingredients: [
-        "2 oz Bourbon",
-        "1 Sugar Cube (or ¼ oz Simple Syrup)",
-        "2 dashes Angostura Bitters",
-        "Orange Peel",
-        "Luxardo Cherry"
-    ],
-
-    instructions: [
-        "Add sugar and bitters to a rocks glass.",
-        "Add bourbon.",
-        "Fill with a large ice cube.",
-        "Stir until chilled.",
-        "Express orange peel over the drink.",
-        "Garnish with orange peel and cherry."
-    ],
-
-    variations: [
-        {
-            name: "Bourbon Smash",
-            description:
-                "Fresh mint and lemon make this a refreshing summer bourbon cocktail."
-        },
-        {
-            name: "Kentucky Mule",
-            description:
-                "Swap ginger beer and lime for a bourbon twist on the Moscow Mule."
-        }
-    ]
-},
-
-{
-    id: 2,
-
-    title: "Executive Order",
-
-    cocktail: "Hugo Spritz",
-
-    badge: "SIGNATURE",
-
-    image: "images/hugo.jpeg",
-
-    description:
-"A beautiful decision. Fresh mint, elderflower, lime, and sparkling prosecco combine into a cocktail that brings elegance and energy to the party. Light, refreshing, and exactly what you want when celebrating a tremendous occasion.",
-    ingredients: [
-        "2 oz St-Germain",
-        "4 oz Prosecco",
-        "Splash Club Soda",
-        "Fresh Mint",
-        "Lime Wheel"
-    ],
-
-    instructions: [
-        "Fill a wine glass with ice.",
-        "Add St-Germain.",
-        "Pour in prosecco.",
-        "Top with club soda.",
-        "Stir gently.",
-        "Garnish with mint and lime."
-    ],
-
-    variations: [
-        {
-            name: "Aperol Spritz",
-            description:
-                "Swap elderflower for Aperol for an Italian classic."
-        },
-        {
-            name: "Hugo Royale",
-            description:
-                "Skip the soda for a richer sparkling cocktail."
-        }
-    ]
-},
-
-{
-    id: 3,
-
-    title: "Make Sixty Great Again",
-
-    cocktail: "Margarita",
-
-    badge: "SIGNATURE",
-
-    image: "images/marg.jpeg",
-
-    description:
-"A huge celebration deserves a huge margarita. Premium tequila, fresh lime, and orange liqueur come together in a winning combination. Bright, bold, and made for people who know how to celebrate sixty years of greatness.",
-    ingredients: [
-        "2 oz Blanco Tequila",
-        "1 oz Cointreau",
-        "1 oz Fresh Lime Juice",
-        "Salt Rim"
-    ],
-
-    instructions: [
-        "Salt the rim.",
-        "Shake tequila, Cointreau and lime with ice.",
-        "Strain over fresh ice.",
-        "Garnish with lime."
-    ],
-
-    variations: [
-        {
-            name: "Ranch Water",
-            description:
-                "Tequila, lime and club soda. Simple, crisp and refreshing."
-        },
-        {
-            name: "Tommy's Margarita",
-            description:
-                "Replace Cointreau with agave syrup."
-        }
-    ]
-},
-
-{
-    id: 4,
-
-    title: "Fake Mules",
-
-    cocktail: "Moscow Mule",
-
-    badge: "SIGNATURE",
-
-    image: "images/mule.jpeg",
-
-    description:
-"A very strong mule. Crisp vodka, powerful ginger beer, and fresh lime make this one stand out from the crowd. Other mules are good — this one is ready to take the lead.",
-    ingredients: [
-        "2 oz Vodka",
-        "4 oz Ginger Beer",
-        "½ oz Lime Juice"
-    ],
-
-    instructions: [
-        "Fill copper mug with ice.",
-        "Add vodka.",
-        "Add lime juice.",
-        "Top with ginger beer.",
-        "Stir gently.",
-        "Garnish with lime."
-    ],
-
-    variations: [
-        {
-            name: "Kentucky Mule",
-            description:
-                "Use bourbon instead of vodka."
-        }
-    ]
-},
-
-{
-    id: 5,
-
-    title: "Covfefe",
-
-    cocktail: "Espresso Martini",
-
-    badge: "SIGNATURE",
-
-    image: "images/espresso.jpeg",
-
-    description:
-"A legendary late-night creation. Nobody expected it, but everyone agrees it works. Rich espresso, smooth vodka, and just enough sweetness create the perfect cocktail to keep the celebration going.",
-    ingredients: [
-        "2 oz Vodka",
-        "1 oz Coffee Liqueur",
-        "1 oz Fresh Espresso",
-        "¼ oz Simple Syrup (optional)"
-    ],
-
-    instructions: [
-        "Shake everything vigorously with ice.",
-        "Double strain into a coupe.",
-        "Garnish with coffee beans."
-    ],
-
-    variations: [
-        {
-            name: "Black Russian",
-            description:
-                "Vodka and coffee liqueur only."
-        },
-        {
-            name: "White Russian",
-            description:
-                "Add heavy cream."
-        },
-        {
-            name: "Espresso White Russian",
-            description:
-                "A creamy version with fresh espresso."
-        }
-    ]
-},
-
-{
-    id: 6,
-
-    title: "The Victory Lap",
-
-    cocktail: "Paper Plane",
-
-    badge: "SIGNATURE",
-
-    image: "images/paper_plane.jpeg",
-
-    description:
-"A first-class cocktail with a winning finish. Bourbon, citrus, and bitters come together in perfect balance, served over a beautiful crystal-clear ice cube. A smooth ride from takeoff to landing.",
-    ingredients: [
-        "¾ oz Bourbon",
-        "¾ oz Aperol",
-        "¾ oz Amaro Nonino",
-        "¾ oz Fresh Lemon Juice"
-    ],
-
-    instructions: [
-        "Shake all ingredients with ice.",
-        "Double strain into a coupe glass.",
-        "Garnish with a lemon twist."
-    ],
-
-    variations: [
-        {
-            name: "Boulevardier",
-            description:
-                "If sweet vermouth ever joins the party, this is another bourbon favorite."
-        }
-    ]
-},
-
-{
-    id: 7,
-
-    title: "The Greatest Smash",
-
-    cocktail: "Bourbon Smash",
-
-    badge: "HOUSE FAVORITE",    
-
-    image: "images/smash.jpeg",
-
-    description:
-"A complete success. Bourbon, fresh lemon, mint, and sweetness combine for a cocktail that delivers every single time. Refreshing, powerful, and a guaranteed crowd favorite.",
-    ingredients: [
-        "2 oz Bourbon",
-        "¾ oz Lemon Juice",
-        "½ oz Simple Syrup",
-        "Fresh Mint"
-    ],
-
-    instructions: [
-        "Muddle mint.",
-        "Shake with remaining ingredients.",
-        "Pour over crushed ice.",
-        "Garnish with mint."
-    ],
-
-    variations: []
-},
-
-{
-    id: 8,
-
-    title: "The Wall",
-
-    cocktail: "Ranch Water",
-
-    badge: "HOUSE FAVORITE",
-
-    image: "images/ranch_water.jpeg",
-
-    description:
-"A strong foundation. A beautiful wall. A cocktail that knows exactly what it is. Premium tequila, fresh lime, and sparkling water create a clean, refreshing drink that keeps the good times protected all night long.",
-    ingredients: [
-        "2 oz Blanco Tequila",
-        "1 oz Lime Juice",
-        "Club Soda"
-    ],
-
-    instructions: [
-        "Fill glass with ice.",
-        "Add tequila and lime.",
-        "Top with club soda.",
-        "Stir gently."
-    ],
-
-    variations: [
-        {
-            name: "Tequila Soda",
-            description:
-                "The same cocktail without as much lime."
-        }
-    ]
-},
-
-{
-    id: 9,
-
-    title: "The Orange Wave",
-
-    cocktail: "Aperol Spritz",
-
-    badge: "HOUSE FAVORITE",
-
-    image: "images/aperol.jpeg",
-
-    description:
-"A bright, beautiful cocktail made for sunny days and great celebrations. Aperol, prosecco, and sparkling water create a refreshing combination that brings energy to the entire party.",
-    ingredients: [
-        "3 oz Prosecco",
-        "2 oz Aperol",
-        "1 oz Club Soda",
-        "Orange Slice"
-    ],
-
-    instructions: [
-        "Fill wine glass with ice.",
-        "Add prosecco.",
-        "Add Aperol.",
-        "Top with club soda.",
-        "Garnish with an orange slice."
-    ],
-
-    variations: []
-},
-{
-    id: 10,
-
-    title: "Moo Moo Goo",
-
-    cocktail: "Milk",
-
-    badge: "KIDS FAVORITE",
-
-    image: "images/milk.jpeg",
-
-    description:
-        "Is the milk coated??? A tremendous beverage for our youngest VIP guests. Fresh, creamy, and always a crowd favorite. No cocktails, no problems — just a beautiful glass of milk ready for the next generation of champions.",
-
-    ingredients: [
-        "Milk"
-    ],
-
-    instructions: [
-        "Pour milk into your favorite glass.",
-        "Serve chilled.",
-        "Enjoy like a true VIP."
-    ],
-
-    variations: [
-        {
-            name: "Chocolate Moo Moo Goo",
-            description:
-                "Add chocolate syrup for a sweeter, dessert-style upgrade."
-        },
-        {
-            name: "Strawberry Moo Moo Goo",
-            description:
-                "Mix with strawberry syrup for a fruity twist."
-        }
-    ]
-}
+
+    {
+        id: 1,
+
+        title: "No Tax On Tips",
+
+        cocktail: "Old Fashioned",
+
+        badge: "PRESIDENT'S PICK",
+
+        image: "images/old_fashioned.jpeg",
+
+        glass: "Rocks Glass",
+
+        garnish: "Orange Peel",
+
+        prepTime: "3 minutes",
+
+        strength: "Strong",
+
+        description:
+        "A tremendous classic. Rich bourbon, perfect balance, and absolutely no unnecessary fees. A drink built for people who appreciate something timeless, powerful, and done the right way.",
+
+        ingredients: [
+            "2 oz Bourbon",
+            "1/4 oz Demerara syrup",
+            "3 dashes Angostura bitters",
+            "Orange peel"
+        ],
+
+        instructions: [
+            "Add bourbon, syrup, and bitters to a mixing glass with ice.",
+            "Stir until chilled and perfectly balanced.",
+            "Strain over one large crystal-clear ice cube.",
+            "Express orange peel over the drink and garnish."
+        ],
+
+        variations: [
+            {
+                name: "The Executive Upgrade",
+                description:
+                "Upgrade to a premium aged bourbon for an even bigger and more luxurious experience."
+            }
+        ]
+    },
+
+
+    {
+        id: 2,
+
+        title: "Executive Order",
+
+        cocktail: "Hugo Spritz",
+
+        badge: "PARTY FAVORITE",
+
+        image: "images/hugo.jpeg",
+
+        glass: "Wine Glass",
+
+        garnish: "Fresh Mint and Lime",
+
+        prepTime: "3 minutes",
+
+        strength: "Light",
+
+        description:
+        "A beautiful decision. Fresh mint, elderflower, lime, and sparkling prosecco combine into a cocktail that brings elegance and energy to the party. Light, refreshing, and exactly what you want when celebrating a tremendous occasion.",
+
+        ingredients: [
+            "2 oz Prosecco",
+            "1 oz Elderflower liqueur",
+            "Fresh mint",
+            "1/2 oz Lime juice",
+            "Splash of soda water"
+        ],
+
+        instructions: [
+            "Add mint and lime to glass.",
+            "Add elderflower liqueur and ice.",
+            "Top with prosecco and soda water.",
+            "Garnish with fresh mint."
+        ],
+
+        variations: []
+    },
+
+
+    {
+        id: 3,
+
+        title: "Border Crossing",
+
+        cocktail: "Margarita",
+
+        badge: "",
+
+        image: "images/marg.jpeg",
+
+        glass: "Rocks Glass",
+
+        garnish: "Salt Rim and Lime",
+
+        prepTime: "3 minutes",
+
+        strength: "Medium",
+
+        description:
+        "A legendary combination of tequila, citrus, and balance. Smooth, refreshing, and ready for a tremendous celebration.",
+
+        ingredients: [
+            "2 oz Tequila",
+            "1 oz Lime juice",
+            "1 oz Orange liqueur",
+            "1/2 oz Simple syrup"
+        ],
+
+        instructions: [
+            "Combine ingredients with ice.",
+            "Shake until chilled.",
+            "Strain over fresh ice.",
+            "Garnish with lime."
+        ],
+
+        variations: []
+    },
+
+
+    {
+        id: 4,
+
+        title: "The Deal Maker",
+
+        cocktail: "Bourbon Smash",
+
+        badge: "",
+
+        image: "images/smash.jpeg",
+
+        glass: "Rocks Glass",
+
+        garnish: "Mint and Lemon",
+
+        prepTime: "4 minutes",
+
+        strength: "Medium",
+
+        description:
+        "A winning combination of bourbon, fresh citrus, and mint. A deal so good everyone at the table will want one.",
+
+        ingredients: [
+            "2 oz Bourbon",
+            "3/4 oz Lemon juice",
+            "1/2 oz Simple syrup",
+            "Fresh mint"
+        ],
+
+        instructions: [
+            "Muddle mint with syrup and lemon.",
+            "Add bourbon and ice.",
+            "Shake well.",
+            "Pour over fresh ice."
+        ],
+
+        variations: []
+    },
+
+
+    {
+        id: 5,
+
+        title: "The Wall",
+
+        cocktail: "Ranch Water",
+
+        badge: "",
+
+        image: "images/ranch_water.jpeg",
+
+        glass: "Highball Glass",
+
+        garnish: "Lime",
+
+        prepTime: "2 minutes",
+
+        strength: "Refreshing",
+
+        description:
+        "Simple. Strong. Effective. Tequila, lime, and sparkling water create a refreshing wall of flavor that keeps the party moving.",
+
+        ingredients: [
+            "2 oz Tequila",
+            "Fresh lime juice",
+            "Sparkling mineral water"
+        ],
+
+        instructions: [
+            "Fill glass with ice.",
+            "Add tequila and lime.",
+            "Top with sparkling water.",
+            "Stir gently."
+        ],
+
+        variations: []
+    },
+
+
+    {
+        id: 6,
+
+        title: "The Victory Lap",
+
+        cocktail: "Paper Plane",
+
+        badge: "HOUSE FAVORITE",
+
+        image: "images/paper_plane.jpeg",
+
+        glass: "Rocks Glass",
+
+        garnish: "None",
+
+        prepTime: "3 minutes",
+
+        strength: "Medium",
+
+        description:
+        "A first-class cocktail with a winning finish. Bourbon, citrus, and bitters come together in perfect balance, served over a beautiful crystal-clear ice cube. A smooth ride from takeoff to landing.",
+
+        ingredients: [
+            "3/4 oz Bourbon",
+            "3/4 oz Aperol",
+            "3/4 oz Amaro Nonino",
+            "3/4 oz Lemon juice"
+        ],
+
+        instructions: [
+            "Combine all ingredients with ice.",
+            "Shake until chilled.",
+            "Strain into rocks glass over one large cube."
+        ],
+
+        variations: []
+    },
+
+
+    {
+        id: 7,
+
+        title: "Covfefe",
+
+        cocktail: "Espresso Martini",
+
+        badge: "",
+
+        image: "images/espresso.jpeg",
+
+        glass: "Martini Glass",
+
+        garnish: "Coffee Beans",
+
+        prepTime: "4 minutes",
+
+        strength: "Strong",
+
+        description:
+        "A bold late-night favorite. Rich espresso, smooth vodka, and coffee flavors come together in a cocktail that wakes up the room and keeps the celebration moving. Tremendous energy in every sip.",
+
+        ingredients: [
+            "2 oz Vodka",
+            "1 oz Espresso",
+            "1 oz Coffee liqueur",
+            "Simple syrup"
+        ],
+
+        instructions: [
+            "Shake ingredients vigorously with ice.",
+            "Double strain into chilled glass.",
+            "Top with coffee beans."
+        ],
+
+        variations: []
+    },
+
+
+    {
+        id: 8,
+
+        title: "Fake News Mule",
+
+        cocktail: "Moscow Mule",
+
+        badge: "",
+
+        image: "images/mule.jpeg",
+
+        glass: "Copper Mug",
+
+        garnish: "Lime",
+
+        prepTime: "2 minutes",
+
+        strength: "Medium",
+
+        description:
+        "A classic combination that keeps making headlines. Vodka, ginger beer, and lime create a story everyone can agree tastes great.",
+
+        ingredients: [
+            "2 oz Vodka",
+            "4 oz Ginger beer",
+            "1/2 oz Lime juice"
+        ],
+
+        instructions: [
+            "Fill mug with ice.",
+            "Add vodka and lime.",
+            "Top with ginger beer."
+        ],
+
+        variations: []
+    },
+
+
+    {
+        id: 9,
+
+        title: "The Big Beautiful Bill",
+
+        cocktail: "Beer, Wine & Seltzers",
+
+        badge: "",
+
+        image: "images/beer_wine.jpeg",
+
+        glass: "Various",
+
+        garnish: "None",
+
+        prepTime: "Instant",
+
+        strength: "Varies",
+
+        description:
+        "A massive package with something for everyone. Carefully negotiated and guaranteed to pass at any party.",
+
+        ingredients: [
+            "Beer",
+            "Wine",
+            "Hard Seltzers"
+        ],
+
+        instructions: [
+            "Open.",
+            "Enjoy.",
+            "Repeat responsibly."
+        ],
+
+        variations: []
+    },
+
+
+    {
+        id: 10,
+
+        title: "Moo Moo Goo",
+
+        cocktail: "Milk",
+
+        badge: "KIDS FAVORITE",
+
+        image: "images/milk.jpeg",
+
+        glass: "Glass",
+
+        garnish: "None",
+
+        prepTime: "Instant",
+
+        strength: "Family Friendly",
+
+        description:
+        "The official kids' selection. Fresh, classic, and absolutely tremendous when cookies are involved.",
+
+        ingredients: [
+            "Milk"
+        ],
+
+        instructions: [
+            "Pour.",
+            "Enjoy."
+        ],
+
+        variations: []
+    }
 
 ];

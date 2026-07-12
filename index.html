@@ -7,21 +7,16 @@
 
     <meta
         name="viewport"
-        content="width=device-width, initial-scale=1.0">
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <title>Pole Position | 60th Birthday Cocktail Menu</title>
-
-
-    <!-- Bootstrap -->
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-        rel="stylesheet">
+    <title>Pole Position</title>
 
 
-    <!-- Custom Styles -->
     <link
         rel="stylesheet"
-        href="styles.css">
+        href="styles.css"
+    >
 
 </head>
 
@@ -29,11 +24,12 @@
 <body>
 
 
-<!-- =========================
+<!-- ======================================
      HERO SECTION
-========================= -->
+====================================== -->
 
-<section class="hero">
+
+<header class="hero">
 
 
     <video
@@ -41,11 +37,13 @@
         autoplay
         muted
         loop
-        playsinline>
+        playsinline
+    >
 
         <source
             src="videos/poleposition.mp4"
-            type="video/mp4">
+            type="video/mp4"
+        >
 
     </video>
 
@@ -69,20 +67,28 @@
         </h4>
 
 
+        <div class="scroll-hint">
+
+            ↓ Explore The Cocktails ↓
+
+        </div>
+
+
     </div>
 
 
-</section>
+</header>
 
 
 
 
 
-<!-- =========================
-     COCKTAIL MENU
-========================= -->
+<!-- ======================================
+     DRINK MENU
+====================================== -->
 
-<main class="container mt-5">
+
+<main class="container">
 
 
     <h2 class="section-title">
@@ -93,13 +99,14 @@
 
 
 
-    <!-- JavaScript injects cards here -->
-
     <div
         id="drinkContainer"
-        class="row g-4">
+        class="drink-grid"
+    >
+
 
     </div>
+
 
 
 </main>
@@ -108,53 +115,75 @@
 
 
 
-<!-- =========================
-     COCKTAIL MODAL
-========================= -->
 
-<div
-    class="modal fade"
-    id="drinkModal"
-    tabindex="-1"
-    aria-hidden="true">
+
+<!-- ======================================
+     RECIPE VIEWER
+====================================== -->
+
+
+<section
+    id="recipeViewer"
+    class="recipe-viewer"
+>
+
+
+    <button
+        id="closeViewer"
+        class="close-viewer"
+        aria-label="Close"
+    >
+
+        ✕
+
+    </button>
+
+
+
+    <button
+        id="previousDrink"
+        class="recipe-nav previous"
+        aria-label="Previous drink"
+    >
+
+        ←
+
+    </button>
+
+
+
+    <button
+        id="nextDrink"
+        class="recipe-nav next"
+        aria-label="Next drink"
+    >
+
+        →
+
+    </button>
+
 
 
     <div
-        class="modal-dialog modal-dialog-centered modal-lg">
-
-
-        <div
-            class="modal-content cocktail-modal">
-
-
-            <div id="modalContent"></div>
-
-
-        </div>
+        id="recipeContent"
+        class="recipe-content"
+    >
 
 
     </div>
 
 
-</div>
+
+</section>
 
 
 
-
-
-<!-- =========================
-     JAVASCRIPT
-========================= -->
 
 
 <script src="js/drinks.js"></script>
 
 <script src="js/app.js"></script>
 
-
-<script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
-</script>
 
 
 </body>

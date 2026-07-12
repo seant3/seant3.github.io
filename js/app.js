@@ -6,20 +6,17 @@ document.addEventListener("DOMContentLoaded", () => {
     let touchStartX = 0;
     let touchEndX = 0;
 
-    let hasSwiped = false;
-
 
 
     // ======================================
     // HERO VIDEO SPEED
     // ======================================
 
-
     const heroVideo =
         document.getElementById("heroVideo");
 
 
-    if (heroVideo) {
+    if(heroVideo){
 
         heroVideo.addEventListener(
             "loadedmetadata",
@@ -35,27 +32,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    // ======================================
-    // ELEMENT REFERENCES
-    // ======================================
 
+    // ======================================
+    // ELEMENTS
+    // ======================================
 
     const drinkContainer =
         document.getElementById("drinkContainer");
 
 
-    const modalContent =
-        document.getElementById("modalContent");
+    const recipeViewer =
+        document.getElementById("recipeViewer");
 
 
-    const drinkModalElement =
-        document.getElementById("drinkModal");
+    const recipeContent =
+        document.getElementById("recipeContent");
 
 
-    const drinkModal =
-        new bootstrap.Modal(
-            drinkModalElement
-        );
+    const closeViewer =
+        document.getElementById("closeViewer");
+
+
+    const previousDrink =
+        document.getElementById("previousDrink");
+
+
+    const nextDrink =
+        document.getElementById("nextDrink");
+
+
 
 
 
@@ -66,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // ======================================
 
 
-    drinks.forEach((drink, index) => {
+    drinks.forEach((drink,index)=>{
 
 
         const card =
@@ -74,53 +79,55 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         card.className =
-            "col-md-4";
+            "drink-card";
 
 
 
         card.innerHTML = `
 
-            <div
-                class="card h-100 drink-card"
-                data-index="${index}">
+            <img
+                src="${drink.image}"
+                alt="${drink.title}"
+            >
 
 
-                <img
-                    src="${drink.image}"
-                    class="card-img-top"
-                    alt="${drink.title}">
+            <div class="card-content">
 
 
-                <div class="card-body">
+                ${
+                    drink.badge
+                    ?
+                    `
+                    <span class="drink-badge">
+
+                        ${drink.badge}
+
+                    </span>
+                    `
+                    :
+                    ""
+                }
 
 
-                    ${
-                        drink.badge
-                        ?
-                        `<span class="badge bg-danger">
-                            ${drink.badge}
-                        </span>`
-                        :
-                        ""
-                    }
+
+                <h3>
+
+                    ${drink.title}
+
+                </h3>
 
 
-                    <h5 class="card-title mt-2">
-                        ${drink.title}
-                    </h5>
+
+                <p>
+
+                    ${drink.description}
+
+                </p>
 
 
-                    <p class="card-text">
-                        ${drink.description}
-                    </p>
+                <div class="click-hint">
 
-
-                    <div class="click-hint">
-
-                        Tap for recipe 🍸
-
-                    </div>
-
+                    Tap for recipe 🍸
 
                 </div>
 
@@ -128,6 +135,17 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
 
         `;
+
+
+
+        card.addEventListener(
+            "click",
+            ()=>{
+
+                openDrink(index);
+
+            }
+        );
 
 
 
@@ -143,69 +161,107 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // ======================================
-    // BUILD MODAL CONTENT
+    // OPEN RECIPE VIEWER
     // ======================================
 
 
-    function showDrink(index, direction = "") {
+    function openDrink(index){
 
 
         currentDrinkIndex = index;
 
 
+        renderDrink();
+
+
+        recipeViewer.classList.add(
+            "active"
+        );
+
+
+        recipeContent.scrollTop = 0;
+
+
+    }
+
+
+
+
+
+
+
+
+    // ======================================
+    // RENDER RECIPE
+    // ======================================
+
+
+    function renderDrink(direction=""){
+
+
         const drink =
-            drinks[index];
+            drinks[currentDrinkIndex];
 
 
 
-        modalContent.classList.remove(
+        recipeContent.classList.remove(
             "slide-left",
             "slide-right"
         );
 
 
-        void modalContent.offsetWidth;
+        void recipeContent.offsetWidth;
 
 
 
         if(direction){
 
-            modalContent.classList.add(direction);
+            recipeContent.classList.add(
+                direction
+            );
 
         }
 
 
 
-        modalContent.innerHTML = `
 
 
-            <div class="modal-header">
+        recipeContent.innerHTML = `
 
 
-                <div>
-
-                    <h3>
-                        ${drink.title}
-                    </h3>
+            <div class="recipe-header">
 
 
-                    <small>
-                        ${drink.cocktail}
-                    </small>
+                <h1>
+
+                    ${drink.title}
+
+                </h1>
+
+
+                <h3>
+
+                    ${drink.cocktail}
+
+                </h3>
+
+
+
+                <div class="recipe-meta">
+
+                    <span>
+                        🥃 ${drink.glass}
+                    </span>
+
+                    <span>
+                        ⏱ ${drink.prepTime}
+                    </span>
+
+                    <span>
+                        💪 ${drink.strength}
+                    </span>
 
                 </div>
-
-
-
-                <button
-
-                    type="button"
-
-                    class="btn-close"
-
-                    data-bs-dismiss="modal">
-
-                </button>
 
 
             </div>
@@ -213,190 +269,135 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-            <div class="modal-body">
+            <img
 
+                class="recipe-image"
+
+                src="${drink.image}"
+
+                alt="${drink.title}"
+
+            >
+
+
+
+
+
+            <p class="recipe-description">
+
+                ${drink.description}
+
+            </p>
+
+
+
+
+
+            <h4>
+
+                Ingredients
+
+            </h4>
+
+
+            <ul>
 
                 ${
-                    !hasSwiped
-                    ?
-                    `
-                    <div 
-                        class="swipe-hint"
-                        id="swipeHint">
-
-                        ← Swipe for more cocktails →
-
-                    </div>
-                    `
-                    :
-                    ""
+                    drink.ingredients
+                    .map(item=>
+                        `<li>${item}</li>`
+                    )
+                    .join("")
                 }
 
-
-
-                <img
-
-                    src="${drink.image}"
-
-                    class="modal-drink-image"
-
-                    alt="${drink.title}">
-
-
-
-                <div class="drink-counter">
-
-                    ${index + 1} of ${drinks.length}
-
-                </div>
-
-
-
-                <p class="mt-3">
-
-                    ${drink.description}
-
-                </p>
+            </ul>
 
 
 
 
-                <h5>
 
-                    Ingredients
+            <h4>
 
-                </h5>
+                Instructions
 
-
-
-                <ul>
-
-                    ${
-                        drink.ingredients
-                        ?
-                        drink.ingredients
-                        .map(item =>
-                            `<li>${item}</li>`
-                        )
-                        .join("")
-                        :
-                        "<li>No ingredients listed.</li>"
-                    }
-
-                </ul>
+            </h4>
 
 
-
-
+            <ol>
 
                 ${
                     drink.instructions
-                    ?
-                    `
-
-                    <h5>
-                        Instructions
-                    </h5>
-
-
-                    <ol>
-
-                        ${
-                            drink.instructions
-                            .map(item =>
-                                `<li>${item}</li>`
-                            )
-                            .join("")
-                        }
-
-                    </ol>
-
-                    `
-                    :
-                    ""
+                    .map(item=>
+                        `<li>${item}</li>`
+                    )
+                    .join("")
                 }
 
+            </ol>
 
 
+
+
+
+            ${
+                drink.variations.length
+
+                ?
+
+                `
+
+                <h4>
+                    Variations
+                </h4>
 
 
                 ${
-                    drink.variations &&
-                    drink.variations.length
-                    ?
+                    drink.variations
+                    .map(v=>`
 
-                    `
+                        <div class="variation">
 
-                    <h5>
-                        Variations
-                    </h5>
-
-
-                    ${
-                        drink.variations
-                        .map(v => `
+                            <strong>
+                                ${v.name}
+                            </strong>
 
 
-                            <div class="variation">
+                            <p>
+                                ${v.description}
+                            </p>
 
+                        </div>
 
-                                <strong>
-                                    ${v.name}
-                                </strong>
-
-
-                                <p>
-                                    ${v.description}
-                                </p>
-
-
-                            </div>
-
-
-                        `)
-                        .join("")
-                    }
-
-                    `
-
-                    :
-
-                    ""
-
+                    `)
+                    .join("")
                 }
 
 
+                `
+
+                :
+
+                ""
+
+            }
+
+
+
+
+            <div class="recipe-counter">
+
+                ${currentDrinkIndex + 1}
+                /
+                ${drinks.length}
 
             </div>
 
 
+        `;
+
+    }
 
 
-
-           <div class="modal-footer desktop-navigation">
-
-    <button
-        class="btn btn-outline-primary previous-drink">
-
-        ← Previous
-
-    </button>
-
-
-    <button
-        class="btn btn-primary next-drink">
-
-        Next →
-
-    </button>
-
-</div>
-
-             `;
-     }
-
-
-    
 
 
 
@@ -404,36 +405,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // ======================================
-    // CARD CLICK EVENTS
+    // CLOSE VIEWER
     // ======================================
 
 
-    document
-    .querySelectorAll(".drink-card")
-    .forEach(card => {
+    function closeRecipe(){
 
-
-        card.addEventListener(
-            "click",
-            () => {
-
-
-                hasSwiped = false;
-
-
-                showDrink(
-                    Number(card.dataset.index)
-                );
-
-
-                drinkModal.show();
-
-
-            }
+        recipeViewer.classList.remove(
+            "active"
         );
 
+    }
 
-    });
+
+
+    closeViewer.addEventListener(
+        "click",
+        closeRecipe
+    );
+
+
 
 
 
@@ -442,25 +433,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // ======================================
-    // NEXT / PREVIOUS
+    // NAVIGATION
     // ======================================
 
 
-    function nextDrink(){
-
+    function next(){
 
         currentDrinkIndex++;
 
 
-        if(currentDrinkIndex >= drinks.length){
+        if(
+            currentDrinkIndex >= drinks.length
+        ){
 
             currentDrinkIndex = 0;
 
         }
 
 
-        showDrink(
-            currentDrinkIndex,
+        renderDrink(
             "slide-left"
         );
 
@@ -469,14 +460,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-
-    function previousDrink(){
-
+    function previous(){
 
         currentDrinkIndex--;
 
 
-        if(currentDrinkIndex < 0){
+        if(
+            currentDrinkIndex < 0
+        ){
 
             currentDrinkIndex =
                 drinks.length - 1;
@@ -484,8 +475,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
-        showDrink(
-            currentDrinkIndex,
+        renderDrink(
             "slide-right"
         );
 
@@ -494,33 +484,65 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+    nextDrink.addEventListener(
+        "click",
+        next
+    );
 
+
+
+    previousDrink.addEventListener(
+        "click",
+        previous
+    );
+
+
+
+
+
+
+
+    // ======================================
+    // KEYBOARD SUPPORT
+    // ======================================
 
 
     document.addEventListener(
-        "click",
-        event => {
+        "keydown",
+        event=>{
 
 
             if(
-                event.target.classList.contains(
-                    "next-drink"
+                !recipeViewer.classList.contains(
+                    "active"
                 )
             ){
 
-                nextDrink();
+                return;
 
             }
 
 
 
-            if(
-                event.target.classList.contains(
-                    "previous-drink"
-                )
-            ){
+            if(event.key === "Escape"){
 
-                previousDrink();
+                closeRecipe();
+
+            }
+
+
+
+            if(event.key === "ArrowRight"){
+
+                next();
+
+            }
+
+
+
+            if(event.key === "ArrowLeft"){
+
+                previous();
 
             }
 
@@ -534,16 +556,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-
-
     // ======================================
-    // MOBILE SWIPE SUPPORT
+    // MOBILE SWIPE
     // ======================================
 
 
-    drinkModalElement.addEventListener(
+    recipeViewer.addEventListener(
         "touchstart",
-        event => {
+        event=>{
 
 
             touchStartX =
@@ -557,10 +577,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-
-    drinkModalElement.addEventListener(
+    recipeViewer.addEventListener(
         "touchend",
-        event => {
+        event=>{
 
 
             touchEndX =
@@ -582,56 +601,29 @@ document.addEventListener("DOMContentLoaded", () => {
     function handleSwipe(){
 
 
-        const swipeDistance =
+        const distance =
             touchEndX - touchStartX;
 
 
 
-        if(Math.abs(swipeDistance) > 50){
+        if(distance < -50){
 
-
-            const hint =
-                document.getElementById("swipeHint");
-
-
-            if(hint){
-
-                hint.classList.add("hide");
-
-            }
-
-
-            hasSwiped = true;
-
+            next();
 
         }
 
 
 
+        if(distance > 50){
 
-
-        if(swipeDistance < -50){
-
-
-            nextDrink();
-
-
-        }
-
-
-
-
-
-        if(swipeDistance > 50){
-
-
-            previousDrink();
-
+            previous();
 
         }
 
 
     }
+
+
 
 
 });

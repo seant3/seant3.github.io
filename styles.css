@@ -1,16 +1,25 @@
 /* ======================================
-   GLOBAL STYLES
+   GLOBAL
 ====================================== */
+
+* {
+    box-sizing:border-box;
+}
+
 
 html,
 body {
 
+    margin:0;
+
     width:100%;
+
     min-height:100%;
 
     overflow-x:hidden;
 
 }
+
 
 
 body {
@@ -24,7 +33,7 @@ body {
         linear-gradient(
             180deg,
             #ffffff 0%,
-            #f7f8fb 100%
+            #f4f6fb 100%
         );
 
     color:#222;
@@ -32,16 +41,24 @@ body {
 }
 
 
+
 .container {
 
-    padding-bottom:50px;
+    width:min(1200px, 92%);
+
+    margin:auto;
+
+    padding:50px 0;
 
 }
 
 
 
+
+
+
 /* ======================================
-   HERO SECTION
+   HERO
 ====================================== */
 
 
@@ -97,7 +114,8 @@ body {
 
     padding:20px;
 
-    background:rgba(0,0,0,.45);
+    background:
+        rgba(0,0,0,.45);
 
     color:white;
 
@@ -107,15 +125,19 @@ body {
 
 .hero-overlay h1 {
 
-    font-size:clamp(3rem,8vw,6rem);
+    margin:0;
+
+    font-size:
+        clamp(3rem,8vw,6rem);
 
     font-weight:900;
 
-    letter-spacing:3px;
+    letter-spacing:4px;
 
     text-transform:uppercase;
 
-    text-shadow:3px 3px 8px black;
+    text-shadow:
+        4px 4px 10px #000;
 
 }
 
@@ -123,11 +145,13 @@ body {
 
 .hero-overlay h3 {
 
-    font-size:clamp(1.2rem,3vw,2rem);
-
     margin-top:15px;
 
-    text-shadow:2px 2px 5px black;
+    font-size:
+        clamp(1.2rem,3vw,2rem);
+
+    text-shadow:
+        2px 2px 6px #000;
 
 }
 
@@ -137,20 +161,50 @@ body {
 
     margin-top:25px;
 
-    font-size:clamp(1.1rem,3vw,1.8rem);
-
-    font-weight:bold;
-
     color:#d4af37;
 
-    text-shadow:2px 2px 5px black;
+    font-size:
+        clamp(1.1rem,3vw,1.8rem);
+
+    text-shadow:
+        2px 2px 6px #000;
 
 }
 
 
 
+.scroll-hint {
+
+    margin-top:35px;
+
+    font-weight:bold;
+
+    animation:
+        bounce 2s infinite;
+
+}
+
+
+@keyframes bounce {
+
+    0%,100% {
+        transform:translateY(0);
+    }
+
+
+    50% {
+        transform:translateY(10px);
+    }
+
+}
+
+
+
+
+
+
 /* ======================================
-   SECTION TITLE
+   TITLE
 ====================================== */
 
 
@@ -162,14 +216,13 @@ body {
 
     font-weight:900;
 
-    text-transform:uppercase;
-
     letter-spacing:3px;
+
+    text-transform:uppercase;
 
     margin-bottom:40px;
 
 }
-
 
 
 .section-title::after {
@@ -182,7 +235,7 @@ body {
 
     height:5px;
 
-    margin:15px auto 0;
+    margin:15px auto;
 
     background:#b22234;
 
@@ -190,27 +243,45 @@ body {
 
 
 
+
+
+
+
 /* ======================================
-   DRINK CARDS
+   DRINK GRID
 ====================================== */
+
+
+.drink-grid {
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:30px;
+
+}
+
+
 
 
 .drink-card {
 
-    cursor:pointer;
+    background:white;
 
-    border-radius:18px;
+    border-radius:20px;
 
     overflow:hidden;
 
-    border:3px solid transparent;
+    cursor:pointer;
 
-    background:white;
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.12);
 
     transition:
         transform .25s ease,
-        box-shadow .25s ease,
-        border-color .25s ease;
+        box-shadow .25s ease;
 
 }
 
@@ -218,12 +289,11 @@ body {
 
 .drink-card:hover {
 
-    transform:translateY(-8px);
-
-    border-color:#b22234;
+    transform:
+        translateY(-8px);
 
     box-shadow:
-        0 12px 30px rgba(31,60,136,.25);
+        0 15px 35px rgba(31,60,136,.25);
 
 }
 
@@ -231,9 +301,9 @@ body {
 
 .drink-card img {
 
-    height:300px;
-
     width:100%;
+
+    height:300px;
 
     object-fit:cover;
 
@@ -241,21 +311,53 @@ body {
 
 
 
-.drink-card .card-title {
 
-    color:#1f3c88;
+.card-content {
 
-    font-size:1.4rem;
-
-    font-weight:800;
+    padding:20px;
 
 }
 
 
 
-.drink-card .card-text {
+.drink-card h3 {
 
-    color:#444;
+    margin-top:15px;
+
+    color:#1f3c88;
+
+    font-weight:900;
+
+}
+
+
+
+.drink-card p {
+
+    color:#555;
+
+}
+
+
+
+
+.drink-badge {
+
+    display:inline-block;
+
+    background:#b22234;
+
+    color:white;
+
+    padding:6px 12px;
+
+    border-radius:20px;
+
+    font-size:.75rem;
+
+    font-weight:bold;
+
+    letter-spacing:1px;
 
 }
 
@@ -273,46 +375,157 @@ body {
 
 
 
+
+
+
+
 /* ======================================
-   MODAL
+   RECIPE VIEWER
 ====================================== */
 
 
-.cocktail-modal {
+.recipe-viewer {
 
-    border-radius:20px;
+    position:fixed;
 
-    overflow:hidden;
+    inset:0;
+
+    background:white;
+
+    z-index:1000;
+
+    transform:
+        translateX(100%);
 
     transition:
-        transform .25s ease,
-        opacity .25s ease;
+        transform .35s ease;
+
+    display:flex;
+
+    flex-direction:column;
 
 }
 
 
 
-.modal-dialog {
+.recipe-viewer.active {
 
-    max-width:700px;
+    transform:
+        translateX(0);
 
 }
 
 
 
-.modal-header {
+
+
+.close-viewer {
+
+    position:absolute;
+
+    top:20px;
+
+    right:25px;
+
+    z-index:5;
+
+    border:none;
+
+    background:white;
+
+    font-size:2rem;
+
+    width:45px;
+
+    height:45px;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+}
+
+
+
+
+
+.recipe-nav {
+
+    position:absolute;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    border:none;
 
     background:#1f3c88;
 
     color:white;
 
-    border-bottom:5px solid #d4af37;
+    width:45px;
+
+    height:70px;
+
+    font-size:2rem;
+
+    cursor:pointer;
+
+    z-index:3;
 
 }
 
 
 
-.modal-header h3 {
+.recipe-nav.previous {
+
+    left:0;
+
+}
+
+
+
+.recipe-nav.next {
+
+    right:0;
+
+}
+
+
+
+
+
+
+
+.recipe-content {
+
+    width:min(700px,90%);
+
+    margin:auto;
+
+    padding:40px 0;
+
+    overflow-y:auto;
+
+    height:100%;
+
+}
+
+
+
+.recipe-header {
+
+    text-align:center;
+
+}
+
+
+
+.recipe-header h1 {
+
+    color:#1f3c88;
+
+    font-size:2.5rem;
 
     font-weight:900;
 
@@ -320,17 +533,33 @@ body {
 
 
 
-.modal-body {
+.recipe-header h3 {
 
-    max-height:70vh;
-
-    overflow-y:auto;
+    color:#b22234;
 
 }
 
 
 
-.modal-drink-image {
+.recipe-meta {
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+    margin:20px 0;
+
+    font-weight:bold;
+
+}
+
+
+
+.recipe-image {
 
     width:100%;
 
@@ -338,13 +567,53 @@ body {
 
     object-fit:cover;
 
-    border-radius:15px;
+    border-radius:20px;
 
 }
 
 
 
-.modal-body h4 {
+
+.recipe-description {
+
+    font-size:1.1rem;
+
+    line-height:1.6;
+
+}
+
+
+
+.recipe-content h4 {
+
+    color:#b22234;
+
+    margin-top:30px;
+
+}
+
+
+
+.variation {
+
+    background:#f4f6fb;
+
+    padding:15px;
+
+    border-left:
+        5px solid #1f3c88;
+
+    border-radius:10px;
+
+}
+
+
+
+.recipe-counter {
+
+    text-align:center;
+
+    margin-top:30px;
 
     color:#1f3c88;
 
@@ -354,49 +623,10 @@ body {
 
 
 
-.modal-body h5 {
-
-    color:#b22234;
-
-    margin-top:20px;
-
-}
-
-
-
-.variation {
-
-    background:#f7f8fb;
-
-    border-left:5px solid #1f3c88;
-
-    padding:12px;
-
-    margin-bottom:12px;
-
-    border-radius:8px;
-
-}
-
 
 
 /* ======================================
-   DESKTOP NAVIGATION
-====================================== */
-
-
-.desktop-navigation {
-
-    display:flex;
-
-    border-top:3px solid #b22234;
-
-}
-
-
-
-/* ======================================
-   SWIPE EFFECTS
+   ANIMATIONS
 ====================================== */
 
 
@@ -421,7 +651,7 @@ body {
 
     from {
 
-        transform:translateX(40px);
+        transform:translateX(50px);
 
         opacity:0;
 
@@ -429,7 +659,7 @@ body {
 
     to {
 
-        transform:translateX(0);
+        transform:none;
 
         opacity:1;
 
@@ -443,7 +673,7 @@ body {
 
     from {
 
-        transform:translateX(-40px);
+        transform:translateX(-50px);
 
         opacity:0;
 
@@ -451,7 +681,7 @@ body {
 
     to {
 
-        transform:translateX(0);
+        transform:none;
 
         opacity:1;
 
@@ -461,109 +691,11 @@ body {
 
 
 
-/* ======================================
-   SWIPE HINT
-====================================== */
-
-
-.swipe-hint {
-
-    text-align:center;
-
-    font-size:.85rem;
-
-    color:#777;
-
-    margin:10px 0 15px;
-
-    opacity:1;
-
-    transition:
-        opacity .5s ease,
-        transform .5s ease;
-
-}
-
-
-
-.swipe-hint.hide {
-
-    opacity:0;
-
-    transform:translateY(-10px);
-
-    pointer-events:none;
-
-}
 
 
 
 /* ======================================
-   COUNTER
-====================================== */
-
-
-.drink-counter {
-
-    text-align:center;
-
-    color:#1f3c88;
-
-    font-weight:bold;
-
-    margin-top:10px;
-
-}
-
-
-
-/* ======================================
-   BUTTONS
-====================================== */
-
-
-.btn-primary {
-
-    background:#1f3c88;
-
-    border-color:#1f3c88;
-
-}
-
-
-
-.btn-primary:hover {
-
-    background:#b22234;
-
-    border-color:#b22234;
-
-}
-
-
-
-.btn-outline-primary {
-
-    color:#1f3c88;
-
-    border-color:#1f3c88;
-
-}
-
-
-
-.btn-outline-primary:hover {
-
-    background:#1f3c88;
-
-    color:white;
-
-}
-
-
-
-/* ======================================
-   MOBILE OPTIMIZATION
+   MOBILE
 ====================================== */
 
 
@@ -580,7 +712,45 @@ body {
 
 
 
+    .drink-grid {
+
+        grid-template-columns:
+            1fr;
+
+        gap:25px;
+
+    }
+
+
+
     .drink-card img {
+
+        height:260px;
+
+    }
+
+
+
+    .recipe-content {
+
+        width:90%;
+
+        padding:
+            80px 0 40px;
+
+    }
+
+
+
+    .recipe-header h1 {
+
+        font-size:2rem;
+
+    }
+
+
+
+    .recipe-image {
 
         height:240px;
 
@@ -588,112 +758,22 @@ body {
 
 
 
-    body.modal-open {
+    .recipe-nav {
 
-        overflow:hidden;
-
-    }
-
-
-
-    .modal {
-
-        overflow:hidden;
+        display:none;
 
     }
 
 
 
-    .modal-dialog {
+    .close-viewer {
 
-    margin:0;
+        top:
+            calc(15px + env(safe-area-inset-top));
 
-    width:100%;
-
-    height:100dvh;
-
-}
-
-
-
-    .modal-content {
-
-        height:100%;
-
-        display:flex;
-
-        flex-direction:column;
-
-        overflow:hidden;
-
-        border-radius:0;
+        right:15px;
 
     }
 
-
-
-    .modal-header {
-
-        flex-shrink:0;
-
-        padding-top:
-            calc(1rem + env(safe-area-inset-top));
-
-    }
-
-
-
-    .modal-body {
-
-        flex:1 1 auto;
-
-        min-height:0;
-
-        overflow-y:auto !important;
-
-        overflow-x:hidden;
-
-        -webkit-overflow-scrolling:touch;
-
-        padding:15px;
-
-    }
-
-
-
-    .modal-drink-image {
-
-        height:220px;
-
-    }
-
-
-
-    .desktop-navigation {
-
-        display:none !important;
-
-    }
-
-}
-
-@media(max-width:768px){
-
-    .desktop-navigation,
-    .modal-footer {
-
-        display:none !important;
-
-        height:0 !important;
-
-        min-height:0 !important;
-
-        padding:0 !important;
-
-        margin:0 !important;
-
-        border:0 !important;
-
-    }
 
 }
