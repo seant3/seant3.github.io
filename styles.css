@@ -648,3 +648,73 @@ body {
     }
 
 }
+
+/* ======================================
+   MOBILE MODAL SCROLL FIX
+====================================== */
+
+@media(max-width:768px){
+
+    body.modal-open {
+
+        overflow:hidden;
+
+    }
+
+
+    .modal {
+
+        overflow:hidden;
+
+    }
+
+
+    .modal-dialog {
+
+        height:calc(100dvh - 20px);
+
+    }
+
+
+    .modal-content {
+
+        height:100%;
+
+        display:flex;
+
+        flex-direction:column;
+
+        overflow:hidden;
+
+    }
+
+
+    .modal-header {
+
+        flex-shrink:0;
+
+    }
+
+
+    .modal-body {
+
+        flex:1 1 auto;
+
+        min-height:0;
+
+        overflow-y:auto !important;
+
+        overflow-x:hidden;
+
+        -webkit-overflow-scrolling:touch;
+
+    }
+
+
+    .modal-footer {
+
+        flex-shrink:0;
+
+    }
+
+}
