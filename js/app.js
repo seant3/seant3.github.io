@@ -391,9 +391,6 @@ document.addEventListener("DOMContentLoaded", () => {
     </button>
 
 </div>
-}
-            
-
 
              `;
      }
