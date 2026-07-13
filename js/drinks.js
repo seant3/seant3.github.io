@@ -90,7 +90,7 @@ const drinks = [
     {
         id: 3,
 
-        title: "Border Crossing",
+        title: "ICE ICE Baby",
 
         cocktail: "Margarita",
 
@@ -107,8 +107,7 @@ const drinks = [
         strength: "Medium",
 
         description:
-        "A historic journey with no passport required. Premium tequila, fresh lime, and a perfect balance of citrus make this the smoothest crossing you'll ever experience. Big flavor, incredible finish, and approved for celebrations on both sides of the border.",
-
+"A major enforcement action on flavor. Premium tequila, fresh lime, and a perfectly chilled finish come together in a margarita that gets the job done. Strong, effective, and very popular — this is the kind of ICE everyone is happy to see.",
         ingredients: [
             "2 oz Tequila",
             "1 oz Lime juice",
