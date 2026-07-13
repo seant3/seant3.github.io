@@ -78,7 +78,7 @@ body {
 
 
 
-.hero video {
+.hero video{
 
     position:absolute;
 
@@ -90,11 +90,28 @@ body {
 
     object-fit:cover;
 
+    animation:heroZoom 18s linear forwards;
+
+}
+
+@keyframes heroZoom{
+
+    from{
+
+        transform:scale(1);
+
+    }
+
+    to{
+
+        transform:scale(1.08);
+
+    }
+
 }
 
 
-
-.hero-overlay {
+.hero-overlay{
 
     position:relative;
 
@@ -114,13 +131,27 @@ body {
 
     padding:20px;
 
-    background:
-        rgba(0,0,0,.45);
+    background:rgba(0,0,0,.45);
 
     color:white;
 
+    opacity:0;
+
+    animation:heroReveal 1.2s ease forwards;
+
+    animation-delay:3.2s;
+
 }
 
+@keyframes heroReveal{
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
 
 
 .hero-overlay h1 {
@@ -268,23 +299,35 @@ body {
 
 .drink-card {
 
-    background:white;
+    cursor:pointer;
 
-    border-radius:20px;
+    border-radius:18px;
 
     overflow:hidden;
 
-    cursor:pointer;
+    border:3px solid transparent;
 
-    box-shadow:
-        0 8px 25px rgba(0,0,0,.12);
+    background:white;
+
+    opacity:0;
+
+    transform:translateY(35px);
 
     transition:
-        transform .25s ease,
-        box-shadow .25s ease;
+        opacity .6s ease,
+        transform .6s ease,
+        box-shadow .25s ease,
+        border-color .25s ease;
 
 }
 
+.drink-card.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
 
 
 .drink-card:hover {
@@ -775,5 +818,156 @@ body {
 
     }
 
+
+}
+
+.hero,
+.container{
+
+    opacity:0;
+
+}
+
+/* ======================================
+   INTRO SEQUENCE
+====================================== */
+
+#introOverlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:black;
+
+    z-index:99999;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    overflow:hidden;
+
+}
+
+.intro-content{
+
+    text-align:center;
+
+    color:white;
+
+}
+
+.intro-title{
+
+    font-size:clamp(3rem,8vw,6rem);
+
+    font-weight:900;
+
+    letter-spacing:5px;
+
+    opacity:0;
+
+    transform:translateY(30px);
+
+}
+
+.intro-subtitle{
+
+    margin-top:18px;
+
+    font-size:clamp(1.3rem,3vw,2rem);
+
+    opacity:0;
+
+    transform:translateY(30px);
+
+}
+
+.intro-tagline{
+
+    margin-top:30px;
+
+    color:#d4af37;
+
+    font-size:clamp(1rem,2vw,1.4rem);
+
+    letter-spacing:3px;
+
+    opacity:0;
+
+    transform:translateY(30px);
+
+}
+
+.intro-title{
+
+    animation:titleReveal .9s forwards;
+
+}
+
+.intro-subtitle{
+
+    animation:titleReveal .9s .5s forwards;
+
+}
+
+.intro-tagline{
+
+    animation:titleReveal .9s 1s forwards;
+
+}
+
+@keyframes titleReveal{
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.drink-card{
+
+    opacity:0;
+
+    transform:translateY(35px);
+
+}
+
+.drink-card.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+    transition:
+        opacity .6s ease,
+        transform .6s ease;
+
+}
+
+.hero video{
+
+    filter:brightness(.65);
+
+    animation:
+        heroZoom 18s linear forwards,
+        brighten 2s ease forwards;
+
+}
+
+@keyframes brighten{
+
+    to{
+
+        filter:brightness(1);
+
+    }
 
 }

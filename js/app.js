@@ -6,6 +6,42 @@ document.addEventListener("DOMContentLoaded", () => {
     let touchStartX = 0;
     let touchEndX = 0;
 
+window.addEventListener("load", () => {
+
+    const intro =
+        document.getElementById("introOverlay");
+
+    const hero =
+        document.querySelector(".hero");
+
+    const container =
+        document.querySelector(".container");
+
+    setTimeout(() => {
+
+        intro.style.transition = "opacity .8s";
+
+        intro.style.opacity = "0";
+
+        hero.style.transition = "opacity 1s";
+
+        container.style.transition = "opacity 1s";
+
+        hero.style.opacity = "1";
+
+        container.style.opacity = "1";
+
+        revealCards();
+
+        setTimeout(() => {
+
+            intro.remove();
+
+        },800);
+
+    },3000);
+
+});
 
 
     // ======================================
@@ -154,7 +190,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
+function revealCards(){
 
+    const cards =
+        document.querySelectorAll(".drink-card");
+
+    cards.forEach((card,index)=>{
+
+        setTimeout(()=>{
+
+            card.classList.add("show");
+
+        }, index * 80);
+
+    });
+
+}
 
 
 
