@@ -6,50 +6,137 @@ document.addEventListener("DOMContentLoaded", () => {
     let touchStartX = 0;
     let touchEndX = 0;
 
-window.addEventListener("load", () => {
+
+
+    // ======================================
+    // INTRO / HERO SEQUENCE
+    // ======================================
+
 
     const intro =
         document.getElementById("introOverlay");
 
+
     const hero =
         document.querySelector(".hero");
+
 
     const container =
         document.querySelector(".container");
 
+
+    const sectionTitle =
+        document.querySelector(".section-title");
+
+
+
+    if(hero){
+
+        hero.style.opacity = "0";
+
+    }
+
+
+    if(container){
+
+        container.style.opacity = "0";
+
+    }
+
+
+
     setTimeout(() => {
 
-        intro.style.transition = "opacity .8s";
 
-        intro.style.opacity = "0";
+        if(intro){
 
-        hero.style.transition = "opacity 1s";
+            intro.style.transition =
+                "opacity .8s ease";
 
-        container.style.transition = "opacity 1s";
+            intro.style.opacity = "0";
 
-        hero.style.opacity = "1";
+        }
 
-        container.style.opacity = "1";
 
-        revealCards();
+
+        if(hero){
+
+            hero.style.transition =
+                "opacity 1s ease";
+
+            hero.style.opacity = "1";
+
+        }
+
+
+
 
         setTimeout(() => {
 
-            intro.remove();
+
+
+            if(intro){
+
+                intro.remove();
+
+            }
+
+
+
+
+            if(container){
+
+                container.style.transition =
+                    "opacity .8s ease";
+
+                container.style.opacity = "1";
+
+            }
+
+
+
+
+            if(sectionTitle){
+
+                sectionTitle.classList.add(
+                    "show"
+                );
+
+            }
+
+
+
+
+            setTimeout(() => {
+
+                revealCards();
+
+            },300);
+
+
+
 
         },800);
 
+
+
+
     },3000);
 
-});
+
+
+
+
 
 
     // ======================================
     // HERO VIDEO SPEED
     // ======================================
 
+
     const heroVideo =
         document.getElementById("heroVideo");
+
 
 
     if(heroVideo){
@@ -69,9 +156,12 @@ window.addEventListener("load", () => {
 
 
 
+
+
     // ======================================
     // ELEMENTS
     // ======================================
+
 
     const drinkContainer =
         document.getElementById("drinkContainer");
@@ -102,6 +192,7 @@ window.addEventListener("load", () => {
 
 
 
+
     // ======================================
     // CREATE DRINK CARDS
     // ======================================
@@ -114,6 +205,7 @@ window.addEventListener("load", () => {
             document.createElement("div");
 
 
+
         card.className =
             "drink-card";
 
@@ -121,13 +213,16 @@ window.addEventListener("load", () => {
 
         card.innerHTML = `
 
+
             <img
                 src="${drink.image}"
                 alt="${drink.title}"
             >
 
 
+
             <div class="card-content">
+
 
 
                 ${
@@ -146,11 +241,13 @@ window.addEventListener("load", () => {
 
 
 
+
                 <h3>
 
                     ${drink.title}
 
                 </h3>
+
 
 
 
@@ -161,6 +258,8 @@ window.addEventListener("load", () => {
                 </p>
 
 
+
+
                 <div class="click-hint">
 
                     Tap for recipe 🍸
@@ -168,9 +267,12 @@ window.addEventListener("load", () => {
                 </div>
 
 
+
             </div>
 
+
         `;
+
 
 
 
@@ -188,24 +290,43 @@ window.addEventListener("load", () => {
         drinkContainer.appendChild(card);
 
 
-    });
-
-function revealCards(){
-
-    const cards =
-        document.querySelectorAll(".drink-card");
-
-    cards.forEach((card,index)=>{
-
-        setTimeout(()=>{
-
-            card.classList.add("show");
-
-        }, index * 80);
 
     });
 
-}
+
+
+
+
+    function revealCards(){
+
+
+        const cards =
+            document.querySelectorAll(
+                ".drink-card"
+            );
+
+
+
+        cards.forEach((card,index)=>{
+
+
+            setTimeout(()=>{
+
+
+                card.classList.add(
+                    "show"
+                );
+
+
+            }, index * 120);
+
+
+
+        });
+
+
+    }
+
 
 
 
@@ -219,10 +340,13 @@ function revealCards(){
     function openDrink(index){
 
 
-        currentDrinkIndex = index;
+        currentDrinkIndex =
+            index;
+
 
 
         renderDrink();
+
 
 
         recipeViewer.classList.add(
@@ -230,19 +354,13 @@ function revealCards(){
         );
 
 
+
         recipeContent.scrollTop = 0;
 
 
+
     }
-
-
-
-
-
-
-
-
-    // ======================================
+        // ======================================
     // RENDER RECIPE
     // ======================================
 
@@ -261,6 +379,7 @@ function revealCards(){
         );
 
 
+
         void recipeContent.offsetWidth;
 
 
@@ -272,7 +391,6 @@ function revealCards(){
             );
 
         }
-
 
 
 
@@ -290,6 +408,7 @@ function revealCards(){
                 </h1>
 
 
+
                 <h3>
 
                     ${drink.cocktail}
@@ -300,22 +419,27 @@ function revealCards(){
 
                 <div class="recipe-meta">
 
-                    <span>
-                        🥃 ${drink.glass}
-                    </span>
 
                     <span>
-                        ⏱ ${drink.prepTime}
+                        🥃 ${drink.glass || ""}
                     </span>
 
+
                     <span>
-                        💪 ${drink.strength}
+                        ⏱ ${drink.prepTime || ""}
                     </span>
+
+
+                    <span>
+                        💪 ${drink.strength || ""}
+                    </span>
+
 
                 </div>
 
 
             </div>
+
 
 
 
@@ -351,14 +475,20 @@ function revealCards(){
             </h4>
 
 
+
+
             <ul>
 
                 ${
                     drink.ingredients
-                    .map(item=>
+                    ?
+                    drink.ingredients
+                    .map(item =>
                         `<li>${item}</li>`
                     )
                     .join("")
+                    :
+                    ""
                 }
 
             </ul>
@@ -367,30 +497,49 @@ function revealCards(){
 
 
 
-            <h4>
 
-                Instructions
+            ${
+                drink.instructions &&
+                drink.instructions.length
+                ?
 
-            </h4>
+                `
+
+                <h4>
+
+                    Instructions
+
+                </h4>
 
 
-            <ol>
+                <ol>
 
-                ${
-                    drink.instructions
-                    .map(item=>
-                        `<li>${item}</li>`
-                    )
-                    .join("")
-                }
+                    ${
+                        drink.instructions
+                        .map(item =>
+                            `<li>${item}</li>`
+                        )
+                        .join("")
+                    }
 
-            </ol>
+                </ol>
+
+
+                `
+
+                :
+
+                ""
+
+            }
+
 
 
 
 
 
             ${
+                drink.variations &&
                 drink.variations.length
 
                 ?
@@ -398,8 +547,11 @@ function revealCards(){
                 `
 
                 <h4>
+
                     Variations
+
                 </h4>
+
 
 
                 ${
@@ -408,16 +560,24 @@ function revealCards(){
 
                         <div class="variation">
 
+
                             <strong>
+
                                 ${v.name}
+
                             </strong>
 
 
+
                             <p>
+
                                 ${v.description}
+
                             </p>
 
+
                         </div>
+
 
                     `)
                     .join("")
@@ -435,6 +595,8 @@ function revealCards(){
 
 
 
+
+
             <div class="recipe-counter">
 
                 ${currentDrinkIndex + 1}
@@ -446,8 +608,8 @@ function revealCards(){
 
         `;
 
-    }
 
+    }
 
 
 
@@ -462,9 +624,11 @@ function revealCards(){
 
     function closeRecipe(){
 
+
         recipeViewer.classList.remove(
             "active"
         );
+
 
     }
 
@@ -490,7 +654,9 @@ function revealCards(){
 
     function next(){
 
+
         currentDrinkIndex++;
+
 
 
         if(
@@ -502,18 +668,23 @@ function revealCards(){
         }
 
 
+
         renderDrink(
             "slide-left"
         );
+
 
     }
 
 
 
 
+
     function previous(){
 
+
         currentDrinkIndex--;
+
 
 
         if(
@@ -526,11 +697,16 @@ function revealCards(){
         }
 
 
+
         renderDrink(
             "slide-right"
         );
 
+
     }
+
+
+
 
 
 
@@ -546,6 +722,8 @@ function revealCards(){
         "click",
         previous
     );
+
+
 
 
 
@@ -575,11 +753,13 @@ function revealCards(){
 
 
 
+
             if(event.key === "Escape"){
 
                 closeRecipe();
 
             }
+
 
 
 
@@ -591,6 +771,7 @@ function revealCards(){
 
 
 
+
             if(event.key === "ArrowLeft"){
 
                 previous();
@@ -598,8 +779,11 @@ function revealCards(){
             }
 
 
+
         }
     );
+
+
 
 
 
@@ -628,6 +812,7 @@ function revealCards(){
 
 
 
+
     recipeViewer.addEventListener(
         "touchend",
         event=>{
@@ -637,7 +822,9 @@ function revealCards(){
                 event.changedTouches[0].screenX;
 
 
+
             handleSwipe();
+
 
 
         },
@@ -657,11 +844,13 @@ function revealCards(){
 
 
 
+
         if(distance < -50){
 
             next();
 
         }
+
 
 
 
